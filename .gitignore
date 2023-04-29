@@ -1,0 +1,7 @@
+/target
+hidden
+matrix.txt
+mnist_test.csv
+mnist_train.csv
+output
+testing_net
