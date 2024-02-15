@@ -35,18 +35,6 @@ impl NeuralNetwork {
         let output_errors = matrices::Matrix::subtract(&output_data, &final_outputs);
         let transposed_mat = self.output_weights.transpose();
         let hidden_errors = matrices::Matrix::dot(&transposed_mat, &output_errors);
-        //  back propagation
-        // self.output_weights = matrices::Matrix::add(
-        //     &self.output_weights,
-        //     &matrices::Matrix::dot(
-        //         &activations::sigmoid_prime(&final_outputs),
-        //         &(matrices::Matrix::multiply(
-        //             &output_errors,
-        //             &activations::sigmoid_prime(&final_outputs),
-        //         )),
-        //     )
-        //     .scale(self.learning_rate),
-        // );
         let sigmoid_primed_mat = activations::sigmoid_prime(&final_outputs);
         let multiplied_mat = matrices::Matrix::multiply(&output_errors, &sigmoid_primed_mat);
         let transposed_mat = hidden_outputs.transpose();
